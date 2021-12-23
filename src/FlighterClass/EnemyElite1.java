@@ -1,8 +1,9 @@
 package FlighterClass;
 
-import BulletClass.Bullet;
-import BulletClass.EnemyBasicBullet;
-import javafx.animation.*;
+import BulletClass.EnemyEliteBullet1;
+import javafx.animation.KeyFrame;
+import javafx.animation.PathTransition;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -10,19 +11,19 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.*;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 import static ImagePane.AllImage.*;
-import static ImagePane.Map_1_Pane.Main_Pane;
-import static MapClass.Map_1.*;
+import static ImagePane.AllImage.Image_Boom1_6;
+import static ImagePane.MapPane.Main_Pane;
 
-public class Enemy_Type1 extends Flighter{
-    int Image_Height=536;
-    int Image_Width=788;
-    InvalidationListener listener1;
-    InvalidationListener listener2;
-    PathTransition Move;
+public class EnemyElite1 extends Flighter{
+    int Image_Width=412;
+    int Image_Height=256;
+    InvalidationListener listener;
+    PathTransition pt;
     public Rectangle r1=new Rectangle();
     public Rectangle r2=new Rectangle();
 
@@ -38,14 +39,26 @@ public class Enemy_Type1 extends Flighter{
             {
                 if(Exi==0)
                     break;
-                Bullet_Type=new EnemyBasicBullet();
-                Bullet_Type.Initialize(X-15,Y,0);
-                Bullet Bullet_Type2=new EnemyBasicBullet();
-                Bullet_Type2.Initialize(X+15,Y,0);
+                Bullet_Type=new EnemyEliteBullet1();
+                Bullet_Type.Initialize(X,Y,0);
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        Main_Pane.getChildren().add(Bullet_Type2.Bullet_Image);
+
+                        Main_Pane.getChildren().add(Bullet_Type.Bullet_Image);
+                    }
+                });
+                try {
+                    Thread.sleep(300);
+                }catch(InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Bullet_Type=new EnemyEliteBullet1();
+                Bullet_Type.Initialize(X,Y,0);
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+
                         Main_Pane.getChildren().add(Bullet_Type.Bullet_Image);
                     }
                 });
@@ -58,69 +71,33 @@ public class Enemy_Type1 extends Flighter{
         }
     }
 
-    class My_Flighter_Move implements Runnable{
-        public void run()
-        {
-            while(true)
-            {
-                if(Exi==0)
-                    break;
-                try {
-                    Thread.sleep(3200);
-                }catch(InterruptedException e) {
-                    e.printStackTrace();
-                }
-                int Origin_X=X;
-                int Origin_Y=Y;
-                Path path1=new Path(new MoveTo(X,Y+10));
-                path1.getElements().add(new LineTo(Map_Width-X,Y+10));
-                Move.setPath(path1);
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        Move.play();
-                    }
-                });
-                try {
-                    Thread.sleep(3200);
-                }catch(InterruptedException e) {
-                    e.printStackTrace();
-                }
-                Path path2=new Path(new MoveTo(Map_Width-Origin_X,Origin_Y+10));
-                path2.getElements().add(new LineTo(Origin_X,Origin_Y+10));
-                Move.setPath(path2);
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        Move.play();
-                    }
-                });
-            }
-        }
-    }
-
-    class My_Flighter_Death implements Runnable
+    class Flighter_Thread implements Runnable//集合了播放运动动画、越界判定销毁和血量低于0后销毁判定
     {
-        public void run()
-        {
-            while(true)
-            {
+        public void run() {
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    pt.play();
+                }
+            });
+            while (true) {
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
                         if(Health>=0)
-                            r1.setWidth(100*((double)Health/5));
+                            r1.setWidth(200*((double)Health/50));
                     }
                 });
-                if(Health<=0)
-                {
-                    Exi=0;
+                if (Health <= 0) {
+                    Exi = 0;
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
                             ImageView Boom_Image=new ImageView(Image_Boom1_1);
                             Boom_Image.setX(X-40);
                             Boom_Image.setY(Y-40);
+                            Boom_Image.setScaleX(1.7);
+                            Boom_Image.setScaleY(1.7);
                             KeyFrame keyframe1=new KeyFrame(Duration.millis(0), new EventHandler<ActionEvent>() {
                                 @Override
                                 public void handle(ActionEvent actionEvent) {
@@ -173,83 +150,70 @@ public class Enemy_Type1 extends Flighter{
                             animation.getKeyFrames().add(keyframe7);
                             animation.play();
 
-                            Move.stop();
+                            pt.stop();
                             Flighter_Image.setVisible(false);
                             r1.setVisible(false);
                             r2.setVisible(false);
-                            Flighter_Image.translateYProperty().removeListener(listener1);
-                            Flighter_Image.translateYProperty().removeListener(listener2);
+                            Flighter_Image.translateYProperty().removeListener(listener);
                             Main_Pane.getChildren().remove(Flighter_Image);
                             Main_Pane.getChildren().remove(r1);
                             Main_Pane.getChildren().remove(r2);
                         }
                     });
+                    Thread.currentThread().interrupt();
                     break;
                 }
                 try {
                     Thread.sleep(50);
-                }catch(InterruptedException e) {
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
 
-    public void Initialize(int i, int j, PathTransition pt,int num)
+    public void Initialize(int i,int j,int num,int Des_Y)
     {
         Num=num;
-        Health=5;
-        X=i;//起点X
-        Y=j;//起点Y
-        listener1=new InvalidationListener() {
-            @Override
-            public void invalidated(Observable observable) {
-                X=i+(int)Flighter_Image.getTranslateX();
-                r1.setX(X-50);
-                r2.setX(X-51);
-
-            }
-        };
-        listener2=new InvalidationListener() {
-            @Override
-            public void invalidated(Observable observable) {
-                Y=j+(int)Flighter_Image.getTranslateY();
-                r1.setY(Y+70);
-                r2.setY(Y+69);
-            }
-        };
-        Judge_Radius=37;
-        Speed=3;
+        Health=50;
+        this.X=i;
+        this.Y=j;
+        Speed=0.7;
         Exi=1;
+        Judge_Radius=74;
+        Bullet_Type=new EnemyEliteBullet1();
 
         r1.setHeight(7);
-        r1.setWidth(100);
+        r1.setWidth(200);
         r1.setArcHeight(7);
         r1.setArcWidth(7);
         r2.setHeight(9);
-        r2.setWidth(102);
+        r2.setWidth(202);
         r2.setArcHeight(7);
         r2.setArcWidth(7);
         r1.setFill(Color.RED);
         r2.setFill(Color.rgb(225,225,225,0.6));
-        r1.setX(X-50);
-        r2.setX(X-51);
-        r1.setY(Y+70);
-        r2.setY(Y+69);
+        r1.setX(X-100);
+        r2.setX(X-101);
+        r1.setY(Y+80);
+        r2.setY(Y+79);
 
-        Bullet_Type=new EnemyBasicBullet();
-        Flighter_Image=new ImageView(Image_Enemy_Flighter_Type1);
-        Flighter_Image.setFitWidth(157.6);
-        Flighter_Image.setFitHeight(107.2);
-        Flighter_Image.setX(this.X-77);
-        Flighter_Image.setY(this.Y-45);
-        Flighter_Image.translateXProperty().addListener(listener1);
-        Flighter_Image.translateYProperty().addListener(listener2);
-        Move=pt;
-        Move.setNode(Flighter_Image);
-        Move.play();
+        listener=new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                Y=j+(int)Flighter_Image.getTranslateY();
+                r1.setY(Y+80);
+                r2.setY(Y+79);
+            }
+        };
+        Flighter_Image=new ImageView(Image_Enemy_Elite_1);
+        Flighter_Image.setFitHeight(Image_Height/2);
+        Flighter_Image.setFitWidth(Image_Width/2);
+        Flighter_Image.setX(X-102);
+        Flighter_Image.setY(Y-70);
+        Flighter_Image.translateYProperty().addListener(listener);
+        pt=new PathTransition(Duration.millis((Des_Y-(double)Y)/(Speed/10)),new Line(X,Y,X,Des_Y),Flighter_Image);
+        new Thread(new Flighter_Thread()).start();
         new Thread(new My_Bullet_Launch()).start();
-        new Thread(new My_Flighter_Move()).start();
-        new Thread(new My_Flighter_Death()).start();
     }
 }

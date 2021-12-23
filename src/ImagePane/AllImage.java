@@ -5,13 +5,13 @@ import javafx.scene.image.Image;
 public class AllImage {
     public static Image Image_Self_Flighter=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\My_Flighter.png");
     public static Image Image_Self_Basic_Bullet=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\Basic_Bullet.png");
-    public static Image Image_Self_Super_Bullet=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\Super_Bullet.png");
+    public static Image Image_Self_Super_Bullet=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\SuperBullet.png");
     public static Image Image_Background_1=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\Background_1.png");
     public static Image Image_Enemy_Basic_Bullet=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\EnemyBasicBullet.png");
     public static Image Image_Enemy_Flighter_Type1=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\Enemy_Flighter_Type1.png");
     public static Image Image_Enemy_Flighter_Type2=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\Enemy_Flighter_Type2.png");
-    public static Image Image_Enemy_Elite_1=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\Enemy_Elite_1.png");
-    public static Image Image_Enemy_Elite_2=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\Enemy_Elite_2.png");
+    public static Image Image_Enemy_Elite_1=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\EnemyElite1.png");
+    public static Image Image_Enemy_Elite_2=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\EnemyElite2.png");
     public static Image Image_Enemy_Elite_Bullet_1=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\EnemyEliteBullet1.png");
     public static Image Image_Enemy_Elite_Bullet_2=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\EnemyEliteBullet2.png");
     public static Image Image_Boom1_1=new Image("C:\\Users\\19116\\IdeaProjects\\飞机大战\\Image\\Boom_1_1.png");

@@ -9,13 +9,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
-import static ImagePane.AllImage.Image_Self_Basic_Bullet;
-import static ImagePane.Map_1_Pane.Main_Pane;
-import static MapClass.Map_1.All_Flighter;
-//import static MapClass.Map_1.Flighter_Num;
+import static ImagePane.AllImage.Image_Self_Super_Bullet;
+import static ImagePane.MapPane.Main_Pane;
+import static MapClass.Map.All_Flighter;
+//import static MapClass.Map.Flighter_Num;
 
-public class Self_Basic_Bullet extends Bullet{
-    int Image_Width=48;
+public class SelfSuperBullet extends Bullet{
+    int Image_Width=31;
     int Image_Height=181;
     PathTransition pt;
     InvalidationListener listener;
@@ -58,7 +58,7 @@ public class Self_Basic_Bullet extends Bullet{
 
     public void Initialize(int X,int Y,double Radius)
     {
-        Bullet_X=X;
+        Bullet_X=X-1;
         Bullet_Y=Y-60;
         int Origin_Y=Bullet_Y;
         listener=new InvalidationListener() {
@@ -67,15 +67,15 @@ public class Self_Basic_Bullet extends Bullet{
                 Bullet_Y=Origin_Y+(int)Bullet_Image.getTranslateY();
             }
         };
-        Judge_Radius=9;
-        Damage=1;
-        Launch_Interval=300;
+        Judge_Radius=6;
+        Damage=0.5;
+        Launch_Interval=125;
         Speed=6;
         Exi=1;
-        Bullet_Image=new ImageView(Image_Self_Basic_Bullet);
+        Bullet_Image=new ImageView(Image_Self_Super_Bullet);
         Bullet_Image.setFitWidth(Image_Width/3);
         Bullet_Image.setFitHeight(Image_Height/3);
-        Bullet_Image.setX(Bullet_X-8);
+        Bullet_Image.setX(Bullet_X-6);
         Bullet_Image.setY(Bullet_Y-11);
         Bullet_Image.translateYProperty().addListener(listener);
         pt=new PathTransition(Duration.millis(((double)Bullet_Y+50)/(Speed/10)),new Line(Bullet_X,Bullet_Y,Bullet_X,-50),Bullet_Image);
@@ -98,5 +98,5 @@ public class Self_Basic_Bullet extends Bullet{
                 }
             }
         }
-      }
+    }
 }

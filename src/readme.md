@@ -19,20 +19,41 @@ boss攻击模式三种
 玩家攻击模式两种
 ~~~
 ## 类简介
+![文件目录](image.png)
 ### BulletClass、
 内含7个类
 1. 抽象类Bullet  
 记录bullet的基本信息
 2. 普通怪一种子弹类  
-Enemy_Basic_Bullet
+EnemyBasicBullet
 3. 精英怪两种子弹类  
-Enemy_Elite_Bullet_1  
-Enemy_Elite_Bullet_2
+EnemyEliteBullet1  
+EnemyEliteBullet2
 4. 玩家飞机两种子弹类  
-
+SelfSuperBullet  
+SelfBasicBullet
 ### FlighterClass
+内含7个类
+1. 抽象类Flighter  
+记录飞机基本信息
+2. EnemyBoss类  
+Boss的行为
+3. 精英怪的两个类  
+   EnemyElite1 射线  
+   EnemyElite2 跟踪导弹
+4. 普通怪两个类  
+   EnemyBasic1 普通  
+   EnemyBasic2 自杀式攻击
+5. 玩家飞机类  
+SelfFlighter
 ### ImagePane
+1. Allimage类  
+管理所有的贴图
+2. MapPane类  
+主程序
 ### MapClass
+1. Map  
+主界面的封装
 ### MyThread
 ### Updates
 ### GameStart

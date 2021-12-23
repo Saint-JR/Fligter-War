@@ -15,10 +15,10 @@ import javafx.scene.shape.*;
 import javafx.util.Duration;
 
 import static ImagePane.AllImage.*;
-import static ImagePane.Map_1_Pane.Main_Pane;
-import static MapClass.Map_1.My_Flighter;
+import static ImagePane.MapPane.Main_Pane;
+import static MapClass.Map.My_Flighter;
 
-public class Enemy_Boss extends Flighter{
+public class EnemyBoss extends Flighter{
     int Image_Height=334;
     int Image_Width=448;
     double Image_Width_G=120;

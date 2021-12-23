@@ -1,19 +1,19 @@
 package MyThread;
 
 import FlighterClass.*;
-import Updates.Super_Bullet;
+import Updates.SuperBullet;
 import javafx.animation.FadeTransition;
 import javafx.animation.PathTransition;
 import javafx.application.Platform;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
-import static ImagePane.Map_1_Pane.Main_Pane;
-import static MapClass.Map_1.All_Flighter;
-import static MapClass.Map_1.Map_Width;
+import static ImagePane.MapPane.Main_Pane;
+import static MapClass.Map.All_Flighter;
+import static MapClass.Map.Map_Width;
 
 
-public class Enemy_Generator implements Runnable{
+public class Generator implements Runnable{
     public static PathTransition Generate_Path(int i,int Des_X,int Des_Y)
     {
         if(i==1)
@@ -29,7 +29,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type2 Enemy2_1=new Enemy_Type2();
+        EnemyBasic2 Enemy2_1=new EnemyBasic2();
         All_Flighter.add(Enemy2_1);
         Enemy2_1.Initialize(350,0,1);
         Platform.runLater(new Runnable() {
@@ -43,7 +43,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type2 Enemy2_2=new Enemy_Type2();
+        EnemyBasic2 Enemy2_2=new EnemyBasic2();
         All_Flighter.add(Enemy2_2);
         Enemy2_2.Initialize(650,0,2);
         Platform.runLater(new Runnable() {
@@ -57,7 +57,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type2 Enemy2_3=new Enemy_Type2();
+        EnemyBasic2 Enemy2_3=new EnemyBasic2();
         All_Flighter.add(Enemy2_3);
         Enemy2_3.Initialize(500,0,3);
         Platform.runLater(new Runnable() {
@@ -71,8 +71,8 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type1 Enemy1_4 = new Enemy_Type1();
-        Enemy_Type1 Enemy1_5 = new Enemy_Type1();
+        EnemyBasic1 Enemy1_4 = new EnemyBasic1();
+        EnemyBasic1 Enemy1_5 = new EnemyBasic1();
         All_Flighter.add(Enemy1_4);
         All_Flighter.add(Enemy1_5);
         Enemy1_4.Initialize(20, -30, Generate_Path(1, 800, 300),4);
@@ -93,8 +93,8 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type1 Enemy1_6 = new Enemy_Type1();
-        Enemy_Type1 Enemy1_7 = new Enemy_Type1();
+        EnemyBasic1 Enemy1_6 = new EnemyBasic1();
+        EnemyBasic1 Enemy1_7 = new EnemyBasic1();
         All_Flighter.add(Enemy1_6);
         All_Flighter.add(Enemy1_7);
         Enemy1_6.Initialize(20, -30, Generate_Path(1, 700, 200),6);
@@ -115,12 +115,12 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Super_Bullet Update_1=new Super_Bullet();
+        SuperBullet Update_1=new SuperBullet();
         Update_1.Initialize(500,-30);
-        Enemy_Elite_1 Enemy3_8=new Enemy_Elite_1();
+        EnemyElite1 Enemy3_8=new EnemyElite1();
         All_Flighter.add(Enemy3_8);
         Enemy3_8.Initialize(200,-50,8,200);
-        Enemy_Type2 Enemy2_9=new Enemy_Type2();
+        EnemyBasic2 Enemy2_9=new EnemyBasic2();
         All_Flighter.add(Enemy2_9);
         Enemy2_9.Initialize(650,0,9);
         Platform.runLater(new Runnable() {
@@ -138,7 +138,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type2 Enemy2_10=new Enemy_Type2();
+        EnemyBasic2 Enemy2_10=new EnemyBasic2();
         All_Flighter.add(Enemy2_10);
         Enemy2_10.Initialize(350,0,10);
         Platform.runLater(new Runnable() {
@@ -152,7 +152,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type1 Enemy1_11=new Enemy_Type1();
+        EnemyBasic1 Enemy1_11=new EnemyBasic1();
         All_Flighter.add(Enemy1_11);
         Enemy1_11.Initialize(20, -30, Generate_Path(1, 800, 300),11);
         Platform.runLater(new Runnable() {
@@ -168,7 +168,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type1 Enemy1_12=new Enemy_Type1();
+        EnemyBasic1 Enemy1_12=new EnemyBasic1();
         All_Flighter.add(Enemy1_12);
         Enemy1_12.Initialize(20, -30, Generate_Path(1, 700, 200),12);
         Platform.runLater(new Runnable() {
@@ -184,8 +184,8 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type1 Enemy1_13 = new Enemy_Type1();
-        Enemy_Type1 Enemy1_14 = new Enemy_Type1();
+        EnemyBasic1 Enemy1_13 = new EnemyBasic1();
+        EnemyBasic1 Enemy1_14 = new EnemyBasic1();
         All_Flighter.add(Enemy1_13);
         All_Flighter.add(Enemy1_14);
         Enemy1_13.Initialize(20, -30, Generate_Path(1, 800, 300),13);
@@ -207,8 +207,8 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type1 Enemy1_15 = new Enemy_Type1();
-        Enemy_Type1 Enemy1_16 = new Enemy_Type1();
+        EnemyBasic1 Enemy1_15 = new EnemyBasic1();
+        EnemyBasic1 Enemy1_16 = new EnemyBasic1();
         All_Flighter.add(Enemy1_15);
         All_Flighter.add(Enemy1_16);
         Enemy1_15.Initialize(20, -30, Generate_Path(1, 700, 200),15);
@@ -229,7 +229,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type2 Enemy2_17=new Enemy_Type2();
+        EnemyBasic2 Enemy2_17=new EnemyBasic2();
         All_Flighter.add(Enemy2_17);
         Enemy2_17.Initialize(350,0,17);
         Platform.runLater(new Runnable() {
@@ -243,7 +243,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type2 Enemy2_18=new Enemy_Type2();
+        EnemyBasic2 Enemy2_18=new EnemyBasic2();
         All_Flighter.add(Enemy2_18);
         Enemy2_18.Initialize(650,0,18);
         Platform.runLater(new Runnable() {
@@ -257,7 +257,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type2 Enemy2_19=new Enemy_Type2();
+        EnemyBasic2 Enemy2_19=new EnemyBasic2();
         All_Flighter.add(Enemy2_19);
         Enemy2_19.Initialize(500,0,19);
         Platform.runLater(new Runnable() {
@@ -273,8 +273,8 @@ public class Enemy_Generator implements Runnable{
         }
 
 
-        Enemy_Type1 Enemy1_20 = new Enemy_Type1();
-        Enemy_Type1 Enemy1_21 = new Enemy_Type1();
+        EnemyBasic1 Enemy1_20 = new EnemyBasic1();
+        EnemyBasic1 Enemy1_21 = new EnemyBasic1();
         All_Flighter.add(Enemy1_20);
         All_Flighter.add(Enemy1_21);
         Enemy1_20.Initialize(20, -30, Generate_Path(1, 800, 300),20);
@@ -296,11 +296,11 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Elite_2 Enemy4_22=new Enemy_Elite_2();
+        EnemyElite2 Enemy4_22=new EnemyElite2();
         All_Flighter.add(Enemy4_22);
         Enemy4_22.Initialize(800,-50,22,150);
-        Enemy_Type1 Enemy1_23 = new Enemy_Type1();
-        Enemy_Type1 Enemy1_24 = new Enemy_Type1();
+        EnemyBasic1 Enemy1_23 = new EnemyBasic1();
+        EnemyBasic1 Enemy1_24 = new EnemyBasic1();
         All_Flighter.add(Enemy1_23);
         All_Flighter.add(Enemy1_24);
         Enemy1_23.Initialize(20, -30, Generate_Path(1, 700, 200),23);
@@ -324,7 +324,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type2 Enemy2_25=new Enemy_Type2();
+        EnemyBasic2 Enemy2_25=new EnemyBasic2();
         All_Flighter.add(Enemy2_25);
         Enemy2_25.Initialize(350,0,25);
         Platform.runLater(new Runnable() {
@@ -338,7 +338,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type2 Enemy2_26=new Enemy_Type2();
+        EnemyBasic2 Enemy2_26=new EnemyBasic2();
         All_Flighter.add(Enemy2_26);
         Enemy2_26.Initialize(650,0,26);
         Platform.runLater(new Runnable() {
@@ -352,7 +352,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type2 Enemy2_27=new Enemy_Type2();
+        EnemyBasic2 Enemy2_27=new EnemyBasic2();
         All_Flighter.add(Enemy2_27);
         Enemy2_27.Initialize(500,0,27);
         Platform.runLater(new Runnable() {
@@ -368,8 +368,8 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type1 Enemy1_28 = new Enemy_Type1();
-        Enemy_Type1 Enemy1_29 = new Enemy_Type1();
+        EnemyBasic1 Enemy1_28 = new EnemyBasic1();
+        EnemyBasic1 Enemy1_29 = new EnemyBasic1();
         All_Flighter.add(Enemy1_28);
         All_Flighter.add(Enemy1_29);
         Enemy1_28.Initialize(20, -30, Generate_Path(1, 800, 300),28);
@@ -391,17 +391,17 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Elite_2 Enemy4_30=new Enemy_Elite_2();
+        EnemyElite2 Enemy4_30=new EnemyElite2();
         All_Flighter.add(Enemy4_30);
         Enemy4_30.Initialize(800,-50,30,250);
-        Enemy_Elite_2 Enemy4_33=new Enemy_Elite_2();
+        EnemyElite2 Enemy4_33=new EnemyElite2();
         All_Flighter.add(Enemy4_33);
         Enemy4_33.Initialize(200,-50,33,250);
-        Enemy_Elite_1 Enemy3_34=new Enemy_Elite_1();
+        EnemyElite1 Enemy3_34=new EnemyElite1();
         All_Flighter.add(Enemy3_34);
         Enemy3_34.Initialize(500,-50,34,150);
-        Enemy_Type1 Enemy1_31 = new Enemy_Type1();
-        Enemy_Type1 Enemy1_32 = new Enemy_Type1();
+        EnemyBasic1 Enemy1_31 = new EnemyBasic1();
+        EnemyBasic1 Enemy1_32 = new EnemyBasic1();
         All_Flighter.add(Enemy1_31);
         All_Flighter.add(Enemy1_32);
         Enemy1_31.Initialize(20, -30, Generate_Path(1, 700, 200),31);
@@ -431,7 +431,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type2 Enemy2_35=new Enemy_Type2();
+        EnemyBasic2 Enemy2_35=new EnemyBasic2();
         All_Flighter.add(Enemy2_35);
         Enemy2_35.Initialize(350,0,35);
         Platform.runLater(new Runnable() {
@@ -445,7 +445,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type2 Enemy2_36=new Enemy_Type2();
+        EnemyBasic2 Enemy2_36=new EnemyBasic2();
         All_Flighter.add(Enemy2_36);
         Enemy2_36.Initialize(650,0,36);
         Platform.runLater(new Runnable() {
@@ -459,7 +459,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Type2 Enemy2_37=new Enemy_Type2();
+        EnemyBasic2 Enemy2_37=new EnemyBasic2();
         All_Flighter.add(Enemy2_37);
         Enemy2_37.Initialize(500,0,37);
         Platform.runLater(new Runnable() {
@@ -474,7 +474,7 @@ public class Enemy_Generator implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Enemy_Boss Enemy5_38=new Enemy_Boss();
+        EnemyBoss Enemy5_38=new EnemyBoss();
         FadeTransition ft=new FadeTransition();
         ft.setNode(Enemy5_38.Warning);
         ft.setDuration(Duration.millis(500));

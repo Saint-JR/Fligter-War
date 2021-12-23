@@ -1,22 +1,19 @@
 package FlighterClass;
 
 import BulletClass.Bullet;
-import BulletClass.Self_Basic_Bullet;
-import BulletClass.Self_Super_Bullet;
+import BulletClass.SelfBasicBullet;
+import BulletClass.SelfSuperBullet;
 import javafx.application.Platform;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import static ImagePane.AllImage.Image_Health;
 import static ImagePane.AllImage.Image_Self_Flighter;
-import static ImagePane.Map_1_Pane.Main_Pane;
-import static MapClass.Map_1.*;
+import static ImagePane.MapPane.Main_Pane;
+import static MapClass.Map.*;
 
-public class Self_Flighter extends Flighter{
+public class SelfFlighter extends Flighter{
     public int Up_Signal=0;//上移信号
     public int Right_Signal=0;//上移信号
     public int Down_Signal=0;//上移信号
@@ -62,7 +59,7 @@ public class Self_Flighter extends Flighter{
             {
                 if(Bullet_Class==1)
                 {
-                    Bullet_Type=new Self_Basic_Bullet();
+                    Bullet_Type=new SelfBasicBullet();
                     Bullet_Type.Initialize(X,Y,0);
                     Platform.runLater(new Runnable() {
                         @Override
@@ -78,7 +75,7 @@ public class Self_Flighter extends Flighter{
                 }
                 else if(Bullet_Class==2)
                 {
-                    Bullet_Type=new Self_Super_Bullet();
+                    Bullet_Type=new SelfSuperBullet();
                     int Origin_X=X;
                     int Origin_Y=Y;
                     Bullet_Type.Initialize(Origin_X,Origin_Y,0);
@@ -93,9 +90,9 @@ public class Self_Flighter extends Flighter{
                     }catch(InterruptedException e) {
                         e.printStackTrace();
                     }
-                    Bullet Bullet_Type2=new Self_Super_Bullet();
+                    Bullet Bullet_Type2=new SelfSuperBullet();
                     Bullet_Type2.Initialize(Origin_X-15,Origin_Y,0);
-                    Bullet Bullet_Type3=new Self_Super_Bullet();
+                    Bullet Bullet_Type3=new SelfSuperBullet();
                     Bullet_Type3.Initialize(Origin_X+15,Origin_Y,0);
                     Platform.runLater(new Runnable() {
                         @Override
@@ -144,7 +141,7 @@ public class Self_Flighter extends Flighter{
         Judge_Radius=15;
         Speed=4;
         Exi=1;
-        Bullet_Type=new Self_Basic_Bullet();
+        Bullet_Type=new SelfBasicBullet();
         Flighter_Image=new ImageView(Image_Self_Flighter);
         Flighter_Image.setFitWidth(Image_Width/4);
         Flighter_Image.setFitHeight(Image_Height/4);

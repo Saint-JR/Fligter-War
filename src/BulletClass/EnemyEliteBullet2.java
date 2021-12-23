@@ -6,13 +6,12 @@ import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
 import static ImagePane.AllImage.*;
-import static ImagePane.Map_1_Pane.Main_Pane;
-import static MapClass.Map_1.My_Flighter;
+import static ImagePane.MapPane.Main_Pane;
+import static MapClass.Map.My_Flighter;
 
 public class EnemyEliteBullet2 extends Bullet{
     int Image_Width=40;

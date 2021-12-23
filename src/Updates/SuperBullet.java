@@ -10,10 +10,10 @@ import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
 import static ImagePane.AllImage.Image_Super_Bullet_Update;
-import static ImagePane.Map_1_Pane.Main_Pane;
-import static MapClass.Map_1.My_Flighter;
+import static ImagePane.MapPane.Main_Pane;
+import static MapClass.Map.My_Flighter;
 
-public class Super_Bullet extends Update{
+public class SuperBullet extends Update{
     int Image_Width=111;
     int Image_Height=78;
     PathTransition pt;

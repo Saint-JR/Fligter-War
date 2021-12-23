@@ -9,12 +9,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
-import java.awt.geom.PathIterator;
-
 import static ImagePane.AllImage.Image_Boss_Bullet_1;
-import static ImagePane.AllImage.Image_Enemy_Basic_Bullet;
-import static ImagePane.Map_1_Pane.Main_Pane;
-import static MapClass.Map_1.My_Flighter;
+import static ImagePane.MapPane.Main_Pane;
+import static MapClass.Map.My_Flighter;
 
 public class BossBullet extends Bullet{
     double Rotate;
